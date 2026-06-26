@@ -27,9 +27,9 @@ export default function Hero() {
           <a
             href="/resume.pdf"
             download
-            className="px-6 py-2 bg-green-500 rounded"
+            className="ml-4 px-6 py-3 bg-green-600 rounded hover:bg-green-700"
           >
-            Download Resume
+             Download Resume
           </a>
         </div>
       </motion.div>

@@ -3,7 +3,7 @@ import { ThemeProvider } from "next-themes";
 
 export const metadata = {
   title: "Suyash Portfolio",
-  description: "Frontend Developer Portfolio",
+  description: "Frontend Developer Portfolio Website",
 };
 
 export default function RootLayout({
