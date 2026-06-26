@@ -1,39 +1,94 @@
+"use client";
+
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Contact() {
-  return (
-    <section id="contact" className="p-20 bg-black text-white">
-      <h2 className="text-4xl font-bold mb-10">Contact Me</h2>
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState("");
 
-      <form className="flex flex-col gap-4 max-w-md">
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!form.current) return;
+
+    emailjs
+      .sendForm(
+        "service_rizyiz4",
+        "template_cz4b96n",
+        form.current,
+        "MxvdjO2DONd5335pc"
+      )
+      .then(
+        () => {
+          setStatus("Message sent successfully!");
+          form.current?.reset();
+        },
+        () => {
+          setStatus("Failed to send message.");
+        }
+      );
+  };
+
+  return (
+    <section
+      id="contact"
+      className="py-20 px-6 bg-black text-white text-center"
+    >
+      <h2 className="text-4xl font-bold mb-8">Contact Me</h2>
+
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="max-w-xl mx-auto space-y-4"
+      >
         <input
           type="text"
-          placeholder="Name"
-          className="p-3 rounded text-black"
+          name="name"
+          placeholder="Your Name"
+          required
+          className="w-full p-3 rounded bg-gray-800"
         />
 
         <input
           type="email"
-          placeholder="Email"
-          className="p-3 rounded text-black"
+          name="email"
+          placeholder="Your Email"
+          required
+          className="w-full p-3 rounded bg-gray-800"
         />
 
         <textarea
-          placeholder="Message"
-          className="p-3 rounded text-black"
+          name="message"
+          placeholder="Your Message"
+          required
+          rows={5}
+          className="w-full p-3 rounded bg-gray-800"
         ></textarea>
 
-        <button className="bg-blue-500 p-3 rounded">
+        <button
+          type="submit"
+          className="px-6 py-3 bg-blue-600 rounded hover:bg-blue-700"
+        >
           Send Message
         </button>
       </form>
 
-      <div className="flex gap-6 mt-8 text-3xl">
-        <a href="https://github.com/nikhithapammi20-star/suyash-portfolio" target="_blank">
+      {status && <p className="mt-4">{status}</p>}
+
+      <div className="flex justify-center gap-8 mt-8 text-3xl">
+        <a
+          href="https://github.com/nikhithapammi20-star"
+          target="_blank"
+        >
           <FaGithub />
         </a>
 
-        <a href="https://linkedin.com/in/nikhitha-reddy-27a16337b" target="_blank">
+        <a
+          href="https://linkedin.com/in/nikhitha-reddy-27a16337"
+          target="_blank"
+        >
           <FaLinkedin />
         </a>
 
