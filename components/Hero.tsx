@@ -10,8 +10,8 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         className="text-center"
       ><img src="/profile.jpg" alt="Profile" className="w-40 h-40 rounded-full mx-auto mb-6" />
-        <h1 className="text-5xl font-bold">Hi, I'm Suyash</h1>
-        <p className="mt-4 text-xl">Frontend Developer</p>
+        <h1 className="text-5xl font-bold">Hi, I'm Nikhitha Reddy</h1>
+        <p className="mt-4 text-xl">web Developer</p>
 
         <button className="mt-6 px-6 py-2 bg-blue-500 rounded">
           Hire Me
