@@ -1,8 +1,9 @@
 import "./globals.css";
+import { ThemeProvider } from "next-themes";
 
 export const metadata = {
   title: "Suyash Portfolio",
-  description: "Professional Portfolio Website",
+  description: "Frontend Developer Portfolio",
 };
 
 export default function RootLayout({
@@ -11,8 +12,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <ThemeProvider attribute="class">
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
